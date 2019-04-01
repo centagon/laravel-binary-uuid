@@ -1,11 +1,12 @@
 {
-    "name": "spatie/laravel-binary-uuid",
-    "description": "Binary support for UUIDs in Laravel",
+    "name": "centagon/laravel-binary-uuid",
+    "description": "Binary support for UUIDs in Laravel forked from spatie/laravel-binary-uuid as that package is abandoned",
     "keywords": [
+        "centagon",
         "spatie",
         "laravel-binary-uuid"
     ],
-    "homepage": "https://github.com/spatie/laravel-binary-uuid",
+    "homepage": "https://github.com/centagon/laravel-binary-uuid",
     "license": "MIT",
     "authors": [
         {
