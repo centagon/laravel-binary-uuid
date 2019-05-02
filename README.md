@@ -1,6 +1,4 @@
-**THIS PACKAGE IS NOT MAINTAINED ANYMORE**
-
-Alternatives: https://github.com/michaeldyrynda/laravel-efficient-uuid & https://github.com/michaeldyrynda/laravel-model-uuid
+**THIS PACKAGE IS MAINTAINED SORTOF BY CENTAGON**
 
 # Using optimised binary UUIDs in Laravel
 
