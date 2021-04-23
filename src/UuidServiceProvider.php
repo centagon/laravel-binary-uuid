@@ -19,7 +19,10 @@ class UuidServiceProvider extends ServiceProvider
         /** @var \Illuminate\Database\Connection $connection */
         $connection = app('db')->connection();
 
-        $connection->setSchemaGrammar($this->createGrammarFromConnection($connection));
+        // Only replace schema grammar if it is not already MySqlGrammar
+        if (!$connection->getSchemaGrammar() instanceof MySqlGrammar) {
+            $connection->setSchemaGrammar($this->createGrammarFromConnection($connection));
+        }
 
         $this->optimizeUuids();
     }
@@ -30,7 +33,7 @@ class UuidServiceProvider extends ServiceProvider
 
         $queryGrammarClass = get_class($queryGrammar);
 
-        if (! in_array($queryGrammarClass, [
+        if (!in_array($queryGrammarClass, [
             IlluminateMySqlGrammar::class,
             IlluminateSQLiteGrammar::class,
         ])) {
