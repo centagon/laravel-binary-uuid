@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-binary-uuid` will be documented in this file
 
+## 3.0.3 - 2021-04-28
+
+- Add support for multiple uuid database connections by specifying `uuid_connections` in your database config
+
 ## 1.3.0 - 2018-09-24
 
 - add eloquent-ness support

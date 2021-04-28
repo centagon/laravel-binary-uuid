@@ -16,12 +16,22 @@ class UuidServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        /** @var \Illuminate\Database\Connection $connection */
-        $connection = app('db')->connection();
+        $connectionNames = config('database.uuid_connections', []);
 
-        // Only replace schema grammar if it is not already MySqlGrammar
-        if (!$connection->getSchemaGrammar() instanceof MySqlGrammar) {
-            $connection->setSchemaGrammar($this->createGrammarFromConnection($connection));
+        if (empty($connectionNames)) {
+            $connectionNames = [null];
+        }
+
+        // Initialize the schema grammar for all the connections
+        foreach ($connectionNames as $connectionName) {
+
+            /** @var \Illuminate\Database\Connection $connection */
+            $connection = app('db')->connection($connectionName);
+
+            // Only replace schema grammar if it is not already MySqlGrammar
+            if (!$connection->getSchemaGrammar() instanceof MySqlGrammar) {
+                $connection->setSchemaGrammar($this->createGrammarFromConnection($connection));
+            }
         }
 
         $this->optimizeUuids();
