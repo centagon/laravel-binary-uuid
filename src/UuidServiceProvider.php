@@ -63,9 +63,11 @@ class UuidServiceProvider extends ServiceProvider
 
     protected function optimizeUuids()
     {
+        $allowNonStandardUuids = config('uuid.allow_non_standard', false);
+
         $factory = new UuidFactory();
 
-        $codec = new OrderedTimeCodec($factory->getUuidBuilder());
+        $codec = $allowNonStandardUuids ? new NonStandardOrderedTimeCodec($factory->getUuidBuilder()) : new OrderedTimeCodec($factory->getUuidBuilder());
 
         $factory->setCodec($codec);
 
