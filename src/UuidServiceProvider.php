@@ -63,7 +63,7 @@ class UuidServiceProvider extends ServiceProvider
 
     protected function optimizeUuids()
     {
-        $allowNonStandardUuids = config('uuid.allow_non_standard', false);
+        $allowNonStandardUuids = config('uuid.allow_non_standard', true);
 
         $factory = new UuidFactory();
 
