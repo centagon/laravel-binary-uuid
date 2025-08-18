@@ -51,9 +51,9 @@ class UuidServiceProvider extends ServiceProvider
         }
 
         if ($queryGrammar instanceof IlluminateSQLiteGrammar) {
-            $grammar = new SQLiteGrammar();
+            $grammar = new SQLiteGrammar($connection);
         } else {
-            $grammar = new MySqlGrammar();
+            $grammar = new MySqlGrammar($connection);
         }
 
         $grammar->setTablePrefix($queryGrammar->getTablePrefix());
